@@ -17,3 +17,12 @@ CREATE TABLE adherents (
     email VARCHAR(100) NOT NULL UNIQUE,
     date_inscription DATE NOT NULL
 );
+
+CREATE TABLE cours (
+    id INTEGER PRIMARY KEY,
+    nom VARCHAR(80) NOT NULL UNIQUE,
+    categorie VARCHAR(30) NOT NULL CHECK (categorie IN ('Cardio', 'Renforcement', 'Bien-etre')),
+    coach_id INTEGER NOT NULL REFERENCES coachs(id),
+    duree_minutes INTEGER NOT NULL CHECK (duree_minutes BETWEEN 15 AND 120),
+    tarif NUMERIC(8,2) NOT NULL CHECK (tarif > 0)
+);

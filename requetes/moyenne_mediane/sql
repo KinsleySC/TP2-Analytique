@@ -1,0 +1,5 @@
+SELECT COUNT(*) AS reservations,
+       ROUND(AVG(montant), 2) AS moyenne,
+       PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY montant) AS mediane,
+       MIN(montant) AS minimum, MAX(montant) AS maximum
+FROM reservations;

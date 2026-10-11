@@ -26,3 +26,12 @@ CREATE TABLE cours (
     duree_minutes INTEGER NOT NULL CHECK (duree_minutes BETWEEN 15 AND 120),
     tarif NUMERIC(8,2) NOT NULL CHECK (tarif > 0)
 );
+
+CREATE TABLE reservations (
+    id INTEGER PRIMARY KEY,
+    adherent_id INTEGER NOT NULL REFERENCES adherents(id),
+    cours_id INTEGER NOT NULL REFERENCES cours(id),
+    date_seance DATE NOT NULL,
+    montant NUMERIC(8,2) NOT NULL CHECK (montant > 0),
+    UNIQUE (adherent_id, cours_id, date_seance)
+);

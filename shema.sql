@@ -10,3 +10,10 @@ CREATE TABLE coachs (
     manager_id INTEGER REFERENCES coachs(id),
     CHECK (manager_id IS NULL OR manager_id < id)
 );
+
+CREATE TABLE adherents (
+    id INTEGER PRIMARY KEY,
+    nom VARCHAR(80) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    date_inscription DATE NOT NULL
+);

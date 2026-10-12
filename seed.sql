@@ -21,3 +21,20 @@ SELECT g,
        'adherent' || g || '@example.com',
        DATE '2026-05-01' + g
 FROM generate_series(1, 20) AS g;
+
+INSERT INTO cours (id, nom, categorie, coach_id, duree_minutes, tarif) VALUES
+    (1, 'Velo debutant', 'Cardio', 1, 45, 12),
+    (2, 'Velo intense', 'Cardio', 2, 60, 15),
+    (3, 'Course douce', 'Cardio', 3, 45, 12),
+    (4, 'Circuit cardio', 'Cardio', 4, 60, 18),
+    (5, 'Boxe cardio', 'Cardio', 5, 60, 20),
+    (6, 'Abdominaux', 'Renforcement', 6, 30, 10),
+    (7, 'Haut du corps', 'Renforcement', 7, 45, 15),
+    (8, 'Bas du corps', 'Renforcement', 8, 45, 15),
+    (9, 'Musculation', 'Renforcement', 9, 60, 18),
+    (10, 'Circuit force', 'Renforcement', 10, 60, 20),
+    (11, 'Yoga doux', 'Bien-etre', 11, 60, 12),
+    (12, 'Pilates', 'Bien-etre', 12, 60, 15),
+    (13, 'Mobilite', 'Bien-etre', 13, 30, 10),
+    (14, 'Etirements', 'Bien-etre', 14, 30, 10),
+    (15, 'Atelier bien-etre', 'Bien-etre', 15, 120, 90);

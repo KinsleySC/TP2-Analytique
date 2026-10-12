@@ -14,3 +14,10 @@ INSERT INTO coachs (id, nom, manager_id) VALUES
     (13, 'Louise Bertrand', 4),
     (14, 'Nathan Vincent', 5),
     (15, 'Manon Thomas', 8);
+
+INSERT INTO adherents (id, nom, email, date_inscription)
+SELECT g,
+       (ARRAY['Camille', 'Alex', 'Ines', 'Tom', 'Lea'])[1 + ((g - 1) % 5)] || ' Adherent ' || g,
+       'adherent' || g || '@example.com',
+       DATE '2026-05-01' + g
+FROM generate_series(1, 20) AS g;

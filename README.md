@@ -1,19 +1,16 @@
 # O'Coach
 
-Projet SQL analytique de niveau B2 informatique/cybersécurité.
+Projet d'analyse SQL pour une salle de sport.
 Équipe : Kinsley, Hugo, Jonathan et Maeva.
 
 O'Coach est une salle de sport fictive. Le projet analyse les réservations de séances payées à l'unité, les recettes et l'activité des coachs. Il ne modélise pas les abonnements.
 
-Les données sont entièrement fictives. Une réservation représente une participation payée à une date de séance. Toutes les réservations sont confirmées ; il n'y a ni annulation ni remboursement dans ce modèle.
+Les données sont entièrement fictives. Chaque réservation correspond à une séance payée par un adhérent. Toutes les réservations sont confirmées ; le modèle ne gère pas les annulations ni les remboursements.
 
-## Écarts à faire accepter par l'intervenant
-
-Le sujet prévoit 2 ou 3 personnes ; cette version est répartie entre 4 personnes à la demande du groupe. Le sujet demande aussi des commentaires SQL : à la demande du groupe, le code n'en contient aucun. Les questions métier et explications sont dans QUESTIONS.md. Ce déplacement ne satisfait pas littéralement l'exigence de commentaires dans requetes.sql.
 
 ## Chargement
 
-Utiliser PostgreSQL et une base dédiée vide appelée ocoach. Dans pgAdmin, créer la base, ouvrir l'outil de requête sur cette base, puis exécuter schema.sql et seed.sql dans cet ordre. Exécuter ensuite une requête à la fois depuis requetes.sql, ou depuis le dossier requetes.
+Utiliser PostgreSQL et une base dédiée vide appelée ocoach. Dans pgAdmin, créer la base, ouvrir l'outil de requête sur cette base, puis exécuter schema.sql et seed.sql dans cet ordre. Sélectionner ensuite la requête à tester dans requetes.sql et l'exécuter.
 
 Avec psql installé et accessible dans le terminal :
 
@@ -33,33 +30,37 @@ schema.sql supprime puis recrée uniquement les quatre tables et la vue du proje
 | coachs | id | manager_id vers coachs.id | Équipe et hiérarchie |
 | adherents | id | Aucun | Clients inscrits |
 | cours | id | coach_id vers coachs.id | Catalogue des activités |
-| reservations | id | adherent_id vers adherents.id ; cours_id vers cours.id | Événements payants |
+| reservations | id | adherent_id vers adherents.id ; cours_id vers cours.id | Réservations et montants payés |
 
 Un coach peut encadrer plusieurs coachs et plusieurs cours. Un cours a un seul coach. Un adhérent peut effectuer plusieurs réservations. Chaque réservation appartient à un seul adhérent et un seul cours.
 
-Il y a 15 coachs, 20 adhérents, 15 cours et 183 réservations entre le 1er juin et le 29 septembre 2026. La génération utilise des restes de division et generate_series : les données sont identiques à chaque chargement. Une activité a lieu un jour sur deux pour rendre visibles les jours sans activité.
+Il y a 15 coachs, 20 adhérents, 15 cours et 183 réservations entre le 1er juin et le 29 septembre 2026. Les données sont créées avec `generate_series` et des calculs de restes de division. Le même chargement produit toujours les mêmes données. Une activité a lieu un jour sur deux pour rendre visibles les jours sans activité.
 
-manager_id doit être inférieur à id : cette convention simple empêche les cycles dans la hiérarchie, mais limite le choix des identifiants. Les responsables encadrent aussi des cours. Le montant est le prix payé, conservé même si le tarif du catalogue change. Le modèle simplifie les créneaux et ne gère ni capacité ni conflits d'horaires.
+manager_id doit être inférieur à id : cette règle empêche les cycles dans la hiérarchie, mais limite le choix des identifiants. Les responsables encadrent aussi des cours.
+
+Le montant est le prix payé, conservé même si le tarif du catalogue change.
+
+Le modèle ne gère pas les créneaux, la capacité des cours ni les conflits d'horaires.
 
 ## Requêtes et documents
 
 - requetes.sql : les quatorze requêtes, dans l'ordre Q01 à Q14, sans commentaires SQL.
-- requetes/ : une requête par fichier, identifiée par son numéro et son sujet.
 - QUESTIONS.md : question métier et explication de chaque requête.
-- JOURNAL.md : choix, limites et interprétations des résultats vérifiés.
+- JOURNAL.md : choix, limites et explications des résultats.
 - verifications.sql : contrôles de volume et de cohérence en lecture seule.
 - bonus.sql : création et interrogation de la vue du tableau de bord ; à lancer après le chargement.
 - RESULTATS.md et resultats/ : bilan des tests et exports CSV des résultats.
 - ORAL.md et oral/ : déroulé et questions de préparation.
 - CONFORMITE.md : correspondance avec les paliers du TP et écarts explicites.
 - COMMITS.md : 40 étapes proposées, dix par membre.
+- docs/explications_fonctions_fenetre.md : explications des six requêtes de Hugo.
 
-Les noms Q01 à Q14 sont portés par les fichiers individuels. requetes.sql contient uniquement les instructions SQL correspondantes, séparées par une ligne vide.
 
 ## Collaboration
 
-Utiliser exclusivement les lots V2 et ORGANISATION_PARALLELE_V2.txt. Les 40 commits alternent entre quatre branches personnelles, avec dix commits de travail par membre. Les dépendances communes sont partagées après K05, K09 et K10. Hugo puis Jonathan sont intégrés avant la validation finale de Maeva.
+Les explications sont dans docs/ et les contrôles dans controles/. Maeva rassemble les requêtes dans requetes.sql, les explications dans QUESTIONS.md et les contrôles dans verifications.sql après avoir récupéré les autres branches.
 
-Les requêtes individuelles, les explications dans docs/ et les contrôles dans controles/ évitent les modifications concurrentes des fichiers consolidés. Maeva assemble requetes.sql, QUESTIONS.md et verifications.sql après réception des autres branches.
+Les noms retenus pour les contrôles sont controles/kinsley.sql, controles/verification_recettes_categories.sql et controles/verification_dates_montants.sql pour K10, H09 et J09.
 
-Les changements préparés doivent être relus et testés par leurs auteurs. Les ZIP ne contiennent pas d'historique Git préfabriqué. Une branche personnelle peut contenir les commits récupérés des collègues : le compteur par auteur doit rester de dix, pas le nombre total de commits visibles sur cette branche.
+Chacun relit et teste ses changements avant de les envoyer. Le plan de commits sert de guide ; il ne décrit pas à lui seul le travail déjà réalisé. Une branche peut contenir les commits récupérés des autres : pour compter les contributions, il faut regarder l'auteur de chaque commit.
+

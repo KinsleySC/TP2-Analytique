@@ -45,6 +45,7 @@ Le modèle ne gère pas les créneaux, la capacité des cours ni les conflits d'
 ## Requêtes et documents
 
 - requetes.sql : les quatorze requêtes, sans commentaires SQL.
+- dashboard.html : aperçu visuel local des résultats ; ouvrir le fichier dans un navigateur. Les chiffres sont statiques et ne se mettent pas à jour automatiquement depuis PostgreSQL.
 - docs/QUESTIONS.md : question métier et explication de chaque requête.
 - verifications.sql : contrôles de volume et de cohérence en lecture seule.
 - bonus.sql : création et interrogation de la vue du tableau de bord ; à lancer après le chargement.

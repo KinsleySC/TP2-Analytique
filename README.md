@@ -55,5 +55,3 @@ Le modèle ne gère pas les créneaux, la capacité des cours ni les conflits d'
 Les explications sont dans docs/ et les contrôles dans controles/. Maeva rassemble les requêtes dans requetes.sql, les explications dans QUESTIONS.md et les contrôles dans verifications.sql après avoir récupéré les autres branches.
 
 Les noms retenus pour les contrôles sont controles/kinsley.sql, controles/verification_recettes_categories.sql et controles/verification_dates_montants.sql.
-
-Chacun relit et teste ses changements avant de les envoyer. Le plan de commits sert de guide ; il ne décrit pas à lui seul le travail déjà réalisé. Une branche peut contenir les commits récupérés des autres : pour compter les contributions, il faut regarder l'auteur de chaque commit.

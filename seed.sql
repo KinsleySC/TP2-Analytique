@@ -38,7 +38,6 @@ INSERT INTO cours (id, nom, categorie, coach_id, duree_minutes, tarif) VALUES
     (13, 'Mobilite', 'Bien-etre', 13, 30, 10),
     (14, 'Etirements', 'Bien-etre', 14, 30, 10),
     (15, 'Atelier bien-etre', 'Bien-etre', 15, 120, 90);
-
 INSERT INTO reservations (id, adherent_id, cours_id, date_seance, montant)
 SELECT (j - 1) * 3 + p,
        1 + ((j * 3 + p * 7) % 20),

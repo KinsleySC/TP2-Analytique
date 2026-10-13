@@ -1,0 +1,16 @@
+id,nom,manager_id,niveau,chemin
+1,Sarah Morel,,0,Sarah Morel
+3,Emma Laurent,1,1,Sarah Morel > Emma Laurent
+9,Chloe Michel,3,2,Sarah Morel > Emma Laurent > Chloe Michel
+10,Gabriel Leroy,3,2,Sarah Morel > Emma Laurent > Gabriel Leroy
+8,Louis Simon,3,2,Sarah Morel > Emma Laurent > Louis Simon
+15,Manon Thomas,8,3,Sarah Morel > Emma Laurent > Louis Simon > Manon Thomas
+2,Lucas Petit,1,1,Sarah Morel > Lucas Petit
+6,Adam Martin,2,2,Sarah Morel > Lucas Petit > Adam Martin
+5,Jade Roux,2,2,Sarah Morel > Lucas Petit > Jade Roux
+14,Nathan Vincent,5,3,Sarah Morel > Lucas Petit > Jade Roux > Nathan Vincent
+7,Lina Robert,2,2,Sarah Morel > Lucas Petit > Lina Robert
+4,Noah Bernard,1,1,Sarah Morel > Noah Bernard
+11,Alice Garcia,4,2,Sarah Morel > Noah Bernard > Alice Garcia
+12,Arthur David,4,2,Sarah Morel > Noah Bernard > Arthur David
+13,Louise Bertrand,4,2,Sarah Morel > Noah Bernard > Louise Bertrand

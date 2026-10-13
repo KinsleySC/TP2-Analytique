@@ -44,23 +44,16 @@ Le modèle ne gère pas les créneaux, la capacité des cours ni les conflits d'
 
 ## Requêtes et documents
 
-- requetes.sql : les quatorze requêtes, dans l'ordre Q01 à Q14, sans commentaires SQL.
-- QUESTIONS.md : question métier et explication de chaque requête.
-- JOURNAL.md : choix, limites et explications des résultats.
+- requetes.sql : les quatorze requêtes, sans commentaires SQL.
+- docs/QUESTIONS.md : question métier et explication de chaque requête.
 - verifications.sql : contrôles de volume et de cohérence en lecture seule.
 - bonus.sql : création et interrogation de la vue du tableau de bord ; à lancer après le chargement.
-- RESULTATS.md et resultats/ : bilan des tests et exports CSV des résultats.
-- ORAL.md et oral/ : déroulé et questions de préparation.
-- CONFORMITE.md : correspondance avec les paliers du TP et écarts explicites.
-- COMMITS.md : 40 étapes proposées, dix par membre.
-- docs/explications_fonctions_fenetre.md : explications des six requêtes de Hugo.
 
 
 ## Collaboration
 
 Les explications sont dans docs/ et les contrôles dans controles/. Maeva rassemble les requêtes dans requetes.sql, les explications dans QUESTIONS.md et les contrôles dans verifications.sql après avoir récupéré les autres branches.
 
-Les noms retenus pour les contrôles sont controles/kinsley.sql, controles/verification_recettes_categories.sql et controles/verification_dates_montants.sql pour K10, H09 et J09.
+Les noms retenus pour les contrôles sont controles/kinsley.sql, controles/verification_recettes_categories.sql et controles/verification_dates_montants.sql.
 
 Chacun relit et teste ses changements avant de les envoyer. Le plan de commits sert de guide ; il ne décrit pas à lui seul le travail déjà réalisé. Une branche peut contenir les commits récupérés des autres : pour compter les contributions, il faut regarder l'auteur de chaque commit.
-
